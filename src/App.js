@@ -48,7 +48,7 @@ function App() {
   useEffect(()=>{
     setdata(JSON.parse(localStorage.getItem("movie")) || []);
   },[])
-  
+
   return (
     <div className="App">
       <Container className='text-light mt-5'>
@@ -97,7 +97,7 @@ function App() {
           {/* display review */}
           <Col lg={7} md={6} sm={12} xs={12} className=' bg-transparent rounded-4 ms-lg-auto  p-4' >
             {
-              data.map((val,i)=>{
+              data.length > 0 ? (data.map((val,i)=>{
                 return(
                   <>
                     <div className='shadow mb-3 rounded-5 border-end border-start px-4 py-3 '>
@@ -121,11 +121,13 @@ function App() {
                     </div>
                   </>
                 )
-              })
+              })) : <div className='m-auto w-50'><img src={require('./empty.png')} alt="" className='img-fluid'/></div>
             }
           </Col>
         </Row>
       </Container>
+      
+      
     </div>
   );
 }
